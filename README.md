@@ -111,14 +111,96 @@ que rompen, mirá los errores del compilador.
 
 ---
 
-## 🗺️ Próximos temas (hoja de ruta)
+## 🗺️ Hoja de ruta completa: de acá a dominar Go
 
-Lo que sigue cuando termine punteros, en orden sugerido:
+El objetivo NO es aprender todo (imposible), sino dominar lo necesario para
+hacer **APIs REST bien hechas** y **programas reales**. Esta es la ruta, en
+orden. Cada etapa se apoya en la anterior — no saltees.
 
-1. **Interfaces** — el concepto más importante después de los punteros
-2. **Paquetes y visibilidad** — organizar código en varios archivos/carpetas
-3. **Closures y funciones anónimas** — profundizar lo de Fundamentos 41-42
-4. **Errores avanzados** — `errors.Is/As`, wrapping, errores personalizados
-5. **Generics** — funciones y tipos genéricos (`[T any]`)
-6. **Testing** — `go test`, tests unitarios
-7. **Concurrencia** — goroutines, channels, `sync` (lo más distintivo de Go)
+### Etapa 1 — Completar el lenguaje 🧩
+
+Lo que falta del lenguaje en sí. Sin esto, el código de cualquier API te va
+a parecer chino.
+
+| Tema | Qué es | Por qué importa |
+|------|--------|-----------------|
+| **Interfaces** | Contratos: "cualquier tipo que tenga estos métodos sirve". Implementación implícita, `fmt.Stringer`, `error`, type assertions, type switch | EL concepto más importante después de punteros. Todo Go gira alrededor de interfaces (`io.Reader`, `http.Handler`...) |
+| **Closures y funciones anónimas** | Funciones que "recuerdan" las variables de donde nacieron | Los middlewares de una API son closures. Profundiza Fundamentos 41-42 |
+| **Paquetes y visibilidad** | Organizar código en carpetas/paquetes propios; Mayúscula = público, minúscula = privado; `go.mod` a fondo | Para salir de archivos sueltos y armar proyectos de verdad |
+| **Errores avanzados** | `errors.New`, `fmt.Errorf` con `%w` (wrapping), `errors.Is/As`, errores personalizados, `panic`/`recover` | Una API se diferencia por cómo maneja errores. Profundiza Fundamentos 38 |
+| **Generics** | Funciones y tipos que aceptan cualquier tipo: `func Max[T cmp.Ordered](a, b T) T` | Solo lo básico: leerlos y usarlos. No hace falta dominarlos para APIs |
+
+### Etapa 2 — Biblioteca estándar esencial 📚
+
+Los paquetes que usa el 90% de los programas reales.
+
+| Paquete | Para qué | Prioridad |
+|---------|----------|-----------|
+| **encoding/json** | `Marshal`/`Unmarshal`, tags `` `json:"nombre"` `` — convertir structs ↔ JSON | 🔴 Crítico: una API REST ES recibir y devolver JSON |
+| **time** | Fechas, duraciones, formateo (el raro layout `2006-01-02`), timers | 🔴 Crítico: todo programa usa fechas |
+| **os + archivos** | Leer/escribir archivos, `os.Args`, variables de entorno (`os.Getenv`) | 🔴 Crítico: config de la API viene de variables de entorno |
+| **io / bufio** | Las interfaces `Reader`/`Writer` y lectura eficiente | 🟡 Importante: aparecen en TODAS las firmas de la stdlib |
+| **context** | Cancelación y timeouts que viajan por las funciones | 🔴 Crítico: cada handler HTTP recibe un `context.Context` |
+| **log/slog** | Logging estructurado (el logger moderno de Go) | 🟡 Importante: para saber qué pasa en producción |
+| **regexp** | Expresiones regulares | 🟢 Útil: validaciones; con lo básico alcanza |
+
+### Etapa 3 — Testing 🧪
+
+Antes de concurrencia y APIs, porque vas a testear todo lo que sigue.
+
+1. **go test** — tests unitarios, archivos `_test.go`, `t.Errorf`
+2. **Table-driven tests** — EL patrón de testing de Go (un slice de casos + un loop)
+3. **Subtests y coverage** — `t.Run`, `go test -cover`
+4. **httptest** — testear handlers HTTP sin levantar el servidor (lo retomás en la etapa 5)
+
+### Etapa 4 — Concurrencia 🔀
+
+Lo más distintivo de Go. Para APIs no necesitás ser experto (el servidor HTTP
+ya maneja la concurrencia por vos), pero SÍ entender qué pasa abajo.
+
+1. **Goroutines** — `go func()`: miles de "hilos" baratos
+2. **Channels** — comunicar goroutines; con y sin buffer; `select`
+3. **sync.WaitGroup** — esperar a que terminen varias goroutines
+4. **sync.Mutex** — proteger datos compartidos (y detectar races con `go test -race`)
+5. **context + concurrencia** — cancelar trabajos en curso
+6. **Patrones** — worker pools, pipeline (con uno o dos alcanza)
+
+### Etapa 5 — APIs REST 🌐 (el objetivo)
+
+Acá se junta TODO lo anterior. Go trae casi todo en la stdlib: con `net/http`
+solo ya se hacen APIs profesionales.
+
+1. **net/http servidor** — `http.HandleFunc`, `http.ListenAndServe`, qué es un handler
+2. **Routing moderno** — el `ServeMux` de Go 1.22+: `GET /tareas/{id}` con métodos y parámetros nativos
+3. **JSON in/out** — decodificar el body del request, responder JSON, status codes correctos (200, 201, 400, 404, 500)
+4. **Middleware** — funciones que envuelven handlers: logging, recuperar panics, CORS, auth (son closures + interfaces ✨)
+5. **http.Client** — consumir APIs de terceros (con timeouts SIEMPRE)
+6. **Base de datos** — `database/sql` + driver de PostgreSQL (`pgx`); queries, `QueryRow`, transacciones; migrar esquemas
+7. **Estructura de proyecto** — layout `cmd/` + `internal/`, separar handlers / servicios / repositorios
+8. **Config** — variables de entorno, valores por defecto, secretos fuera del código
+9. **Validación** — validar el input del usuario antes de tocar la DB
+10. **Auth con JWT** — login, tokens, middleware de autenticación
+11. **Graceful shutdown** — apagar el servidor sin cortar requests a la mitad (`context` + señales)
+12. **Frameworks (opcional)** — `chi`, `Gin`, `Echo`: conocelos, pero la stdlib alcanza y los recruiters valoran que la domines
+
+### Etapa 6 — Herramientas y producción 🚀
+
+Para que tus programas salgan de tu máquina.
+
+1. **Tooling** — `golangci-lint`, `go mod tidy`, `go build` para otros sistemas (cross-compile)
+2. **Docker** — empaquetar tu API en una imagen (los binarios de Go son ideales para esto)
+3. **Makefile** — automatizar build/test/run
+4. **Deploy básico** — subir la API a algún servicio (Railway, Fly.io, un VPS)
+
+### 💪 Proyectos para practicar (uno por etapa)
+
+La teoría sin proyectos no se fija. Sugerencias en orden de dificultad:
+
+1. **CLI de tareas** (etapas 1-2): agregar/listar/completar tareas, guardadas en un archivo JSON
+2. **Conversor de monedas** (etapa 2): consume una API de cotizaciones con `http.Client`
+3. **Acortador de URLs** (etapa 5): tu primera API REST, primero en memoria (map), después con DB
+4. **API de tareas completa** (etapas 5-6): CRUD + PostgreSQL + auth JWT + tests + Docker — esto ya es nivel portfolio
+
+> Regla de oro: cuando termines Punteros e Interfaces, empezá el proyecto 1
+> AUNQUE sientas que te falta. Se aprende construyendo y volviendo a la
+> teoría cuando algo no sale.
