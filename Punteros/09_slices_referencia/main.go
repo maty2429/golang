@@ -63,11 +63,11 @@ func main() {
 	fmt.Println("  → a tiene len=3 así que no 've' el elemento 4, pero comparte array")
 
 	// Forzar realloc superando la capacidad
-	c := []int{1, 2, 3}    // cap=3 exacto (sin espacio)
+	c := []int{1, 2, 3} // cap=3 exacto (sin espacio)
 	d := c
-	d = append(d, 4)        // cap superada → Go crea un nuevo array para d
+	d = append(d, 4) // cap superada → Go crea un nuevo array para d
 
-	d[0] = 999              // ahora modifica el NUEVO array de d, no el de c
+	d[0] = 999 // ahora modifica el NUEVO array de d, no el de c
 	fmt.Printf("\nDespués de append que fuerza realloc:\n")
 	fmt.Printf("  c = %v (array original intacto)\n", c)
 	fmt.Printf("  d = %v (nuevo array)\n", d)

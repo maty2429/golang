@@ -18,10 +18,10 @@ import (
 // TIPOS
 // ─────────────────────────────────────────────────────────
 type Producto struct {
-	ID       int
-	Nombre   string
-	Precio   float64
-	Stock    int
+	ID     int
+	Nombre string
+	Precio float64
+	Stock  int
 }
 
 type Item struct {
@@ -48,7 +48,7 @@ func formatearMoneda(monto float64) string {
 	enteroFormateado := formatearEnteroConComas(entero)
 
 	// Construir el string final
-	return fmt.Sprintf("$%s%.2f", enteroFormateado, decimal)[0 : len(fmt.Sprintf("$%s%.2f", enteroFormateado, decimal))]
+	return fmt.Sprintf("$%s%.2f", enteroFormateado, decimal)[0:len(fmt.Sprintf("$%s%.2f", enteroFormateado, decimal))]
 }
 
 // formatearEnteroConComas convierte 1500000 → "1,500,000"

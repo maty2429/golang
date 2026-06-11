@@ -28,11 +28,11 @@ const APP_NOMBRE = "MiApp"
 
 // Constantes en bloque: forma más limpia de declarar varias
 const (
-	LUNES    = "Lunes"
-	MARTES   = "Martes"
+	LUNES     = "Lunes"
+	MARTES    = "Martes"
 	MIERCOLES = "Miércoles"
-	JUEVES   = "Jueves"
-	VIERNES  = "Viernes"
+	JUEVES    = "Jueves"
+	VIERNES   = "Viernes"
 )
 
 // ─────────────────────────────────────────────────────────
@@ -43,13 +43,13 @@ const (
 // Empieza en 0 y se incrementa en 1 por cada constante.
 // Es IDEAL para crear enumeraciones (como en otros lenguajes).
 const (
-	DOMINGO  = iota // 0
-	LUNES2          // 1
-	MARTES2         // 2
-	MIERCOLES2      // 3
-	JUEVES2         // 4
-	VIERNES2        // 5
-	SABADO          // 6
+	DOMINGO    = iota // 0
+	LUNES2            // 1
+	MARTES2           // 2
+	MIERCOLES2        // 3
+	JUEVES2           // 4
+	VIERNES2          // 5
+	SABADO            // 6
 )
 
 // iota con operaciones matemáticas
@@ -64,11 +64,11 @@ const (
 
 // Ejemplo práctico: estados de un pedido
 const (
-	PEDIDO_PENDIENTE   = iota // 0
-	PEDIDO_CONFIRMADO         // 1
-	PEDIDO_EN_CAMINO          // 2
-	PEDIDO_ENTREGADO          // 3
-	PEDIDO_CANCELADO          // 4
+	PEDIDO_PENDIENTE  = iota // 0
+	PEDIDO_CONFIRMADO        // 1
+	PEDIDO_EN_CAMINO         // 2
+	PEDIDO_ENTREGADO         // 3
+	PEDIDO_CANCELADO         // 4
 )
 
 func main() {

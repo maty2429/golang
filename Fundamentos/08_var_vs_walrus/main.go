@@ -26,10 +26,10 @@ func main() {
 	// El tipo es opcional si se provee un valor (inferencia).
 	// El valor es opcional si se provee el tipo (zero value).
 
-	var a int = 10          // tipo y valor explícitos
-	var b int               // solo tipo → zero value (0)
-	var c = "hola"          // inferencia de tipo → string
-	var d, e int = 5, 15    // múltiples variables del mismo tipo
+	var a int = 10       // tipo y valor explícitos
+	var b int            // solo tipo → zero value (0)
+	var c = "hola"       // inferencia de tipo → string
+	var d, e int = 5, 15 // múltiples variables del mismo tipo
 
 	fmt.Println("=== var (forma larga) ===")
 	fmt.Printf("a = %d (tipo: %T)\n", a, a)
@@ -39,10 +39,10 @@ func main() {
 
 	// Bloque var: útil para agrupar declaraciones relacionadas
 	var (
-		nombre   string = "Matias"
-		edad     int    = 25
-		activo   bool   = true
-		balance  float64 // zero value: 0.0
+		nombre  string  = "Matias"
+		edad    int     = 25
+		activo  bool    = true
+		balance float64 // zero value: 0.0
 	)
 
 	fmt.Println("\n=== Bloque var ===")
@@ -57,10 +57,10 @@ func main() {
 	// SOLO funciona dentro de funciones.
 	// DEBE tener un valor (no hay zero value con :=).
 
-	x := 42           // int (Go infiere)
-	y := 3.14         // float64 (Go infiere)
-	z := "mundo"      // string (Go infiere)
-	ok := false       // bool (Go infiere)
+	x := 42      // int (Go infiere)
+	y := 3.14    // float64 (Go infiere)
+	z := "mundo" // string (Go infiere)
+	ok := false  // bool (Go infiere)
 
 	fmt.Println("\n=== := (short declaration) ===")
 	fmt.Printf("x = %d (tipo: %T)\n", x, x)
@@ -92,7 +92,7 @@ func main() {
 
 	// 4. Cuando el tipo inferido NO es el que querés
 	// := infiere float64 para decimales
-	autoInferido := 3.14    // float64
+	autoInferido := 3.14           // float64
 	var comoFloat32 float32 = 3.14 // float32 (necesita var + tipo)
 	fmt.Printf("inferido := 3.14 → %T\n", autoInferido)
 	fmt.Printf("var float32 = 3.14 → %T\n", comoFloat32)

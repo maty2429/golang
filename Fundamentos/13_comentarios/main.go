@@ -61,12 +61,12 @@ func main() {
 	fmt.Println("y:", y)
 
 	/*
-	CÓDIGO TEMPORALMENTE DESACTIVADO:
-	Esto puede ser útil durante el desarrollo para "comentar" código
-	sin borrarlo, mientras experimentás con una alternativa.
+		CÓDIGO TEMPORALMENTE DESACTIVADO:
+		Esto puede ser útil durante el desarrollo para "comentar" código
+		sin borrarlo, mientras experimentás con una alternativa.
 
-	z := calcularAlgoComplejo()
-	fmt.Println(z)
+		z := calcularAlgoComplejo()
+		fmt.Println(z)
 	*/
 
 	// ─────────────────────────────────────────────────────────

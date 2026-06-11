@@ -17,7 +17,7 @@ func main() {
 	//
 	// En cada iteración, range retorna DOS valores:
 	//   - slices/arrays : índice (int),    valor (copia del elemento)
-	//   - strings       : índice (byte),   rune (caracter Unicode)
+	//   - strings       : índice (int, posición en bytes), rune (caracter Unicode)
 	//   - maps          : clave,           valor
 	//   - channels      : valor (solo uno)
 	//
@@ -225,7 +225,7 @@ func main() {
 	fmt.Println("for i, v := range slice   → índice + copia del valor")
 	fmt.Println("for _, v := range slice   → solo valor")
 	fmt.Println("for i := range slice      → solo índice")
-	fmt.Println("for i, r := range string  → índice byte + rune Unicode")
+	fmt.Println("for i, r := range string  → índice int (posición en bytes) + rune Unicode")
 	fmt.Println("for k, v := range map     → clave + valor (orden aleatorio!)")
 	fmt.Println("for v := range channel    → valor (hasta que se cierre)")
 	fmt.Println()

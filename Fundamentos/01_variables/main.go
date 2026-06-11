@@ -66,10 +66,10 @@ func main() {
 	// Útil cuando queremos declarar varias variables juntas,
 	// hace el código más limpio y legible.
 	var (
-		producto  string  = "Notebook"
-		precio    float64 = 1500.99
-		stock     int     = 42
-		disponible bool   = true
+		producto   string  = "Notebook"
+		precio     float64 = 1500.99
+		stock      int     = 42
+		disponible bool    = true
 	)
 
 	fmt.Println("\n=== Declaración en bloque var() ===")

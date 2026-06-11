@@ -79,9 +79,9 @@ func main() {
 
 	// Substrings (slices de string)
 	texto := "Buenos Aires, Argentina"
-	ciudad := texto[0:12]    // bytes 0 al 11
-	pais := texto[14:]       // desde byte 14 hasta el final
-	primeros := texto[:6]    // los primeros 6 bytes
+	ciudad := texto[0:12] // bytes 0 al 11
+	pais := texto[14:]    // desde byte 14 hasta el final
+	primeros := texto[:6] // los primeros 6 bytes
 
 	fmt.Println("\n=== Substrings ===")
 	fmt.Println("Ciudad:", ciudad)
@@ -101,12 +101,12 @@ func main() {
 	// Funciones útiles del paquete strings
 	frase2 := "  hola mundo  "
 	fmt.Println("\n=== Funciones de strings ===")
-	fmt.Println("Original:              '"+frase2+"'")
-	fmt.Println("ToUpper:               '"+strings.ToUpper(frase2)+"'")
-	fmt.Println("ToLower:               '"+strings.ToLower(frase2)+"'")
-	fmt.Println("TrimSpace:             '"+strings.TrimSpace(frase2)+"'")
+	fmt.Println("Original:              '" + frase2 + "'")
+	fmt.Println("ToUpper:               '" + strings.ToUpper(frase2) + "'")
+	fmt.Println("ToLower:               '" + strings.ToLower(frase2) + "'")
+	fmt.Println("TrimSpace:             '" + strings.TrimSpace(frase2) + "'")
 	fmt.Println("Contains 'mundo':      ", strings.Contains(frase2, "mundo"))
-	fmt.Println("Replace:               '"+strings.Replace(frase2, "mundo", "Go", 1)+"'")
+	fmt.Println("Replace:               '" + strings.Replace(frase2, "mundo", "Go", 1) + "'")
 	fmt.Println("Split:                 ", strings.Split("a,b,c", ","))
 	fmt.Println("Join:                  ", strings.Join([]string{"a", "b", "c"}, "-"))
 	fmt.Println("HasPrefix 'hola':      ", strings.HasPrefix(strings.TrimSpace(frase2), "hola"))
@@ -140,9 +140,9 @@ func main() {
 	// Esto es lo que necesitás usar cuando trabajás con texto UTF-8
 	// que incluye acentos, caracteres especiales, emojis, etc.
 
-	var r rune = 'A'         // comilla simple para rune literal
-	var r2 rune = 'Ñ'        // caracter especial español
-	var r3 rune = '🚀'       // emoji (ocupa 4 bytes pero es 1 rune)
+	var r rune = 'A'  // comilla simple para rune literal
+	var r2 rune = 'Ñ' // caracter especial español
+	var r3 rune = '🚀' // emoji (ocupa 4 bytes pero es 1 rune)
 
 	fmt.Println("\n=== rune ===")
 	fmt.Printf("rune 'A':  valor int32=%d, caracter=%c\n", r, r)

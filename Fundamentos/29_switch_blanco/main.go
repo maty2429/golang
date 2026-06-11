@@ -163,10 +163,10 @@ func main() {
 	fmt.Println("\n=== Tipo de triángulo ===")
 
 	triangulos := [][3]float64{
-		{5, 5, 5},   // equilátero
-		{5, 5, 8},   // isósceles
-		{3, 4, 5},   // escaleno
-		{3, 4, 10},  // inválido
+		{5, 5, 5},  // equilátero
+		{5, 5, 8},  // isósceles
+		{3, 4, 5},  // escaleno
+		{3, 4, 10}, // inválido
 	}
 
 	for _, lados := range triangulos {
@@ -198,7 +198,7 @@ func main() {
 	}
 
 	formularios := []FormRegistro{
-		{"", "user@mail.com", "pass123", 25},        // sin usuario
+		{"", "user@mail.com", "pass123", 25},         // sin usuario
 		{"juan", "", "pass123", 25},                  // sin email
 		{"ana", "ana@mail.com", "123", 25},           // contraseña corta
 		{"carlos", "carlos@mail.com", "pass123", 15}, // menor de edad

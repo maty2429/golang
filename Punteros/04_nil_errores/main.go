@@ -167,7 +167,7 @@ func main() {
 	// BIEN: copiar en variable local dentro del loop
 	var punterosBIEN []*int
 	for _, n := range numeros {
-		copia := n             // variable nueva en cada iteración
+		copia := n // variable nueva en cada iteración
 		punterosBIEN = append(punterosBIEN, &copia)
 	}
 	fmt.Print("BIEN (cada uno tiene su propio valor): ")

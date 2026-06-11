@@ -40,10 +40,10 @@ type Direccion struct {
 
 // Empleado tiene una Persona embebida y una Dirección anidada.
 type Empleado struct {
-	Persona           // embedding: herencia de composición
-	Legajo   int
-	Salario  float64
-	Cargo    string
+	Persona   // embedding: herencia de composición
+	Legajo    int
+	Salario   float64
+	Cargo     string
 	Domicilio Direccion
 }
 

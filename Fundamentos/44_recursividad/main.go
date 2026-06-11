@@ -94,9 +94,9 @@ func factorialVisual(n, nivel int) int {
 // APLICACIÓN A LA TIENDA: Calcular total de carrito anidado
 // ─────────────────────────────────────────────────────────
 type Nodo struct {
-	Nombre    string
-	Precio    float64
-	SubNodos  []Nodo // un producto puede tener sub-componentes
+	Nombre   string
+	Precio   float64
+	SubNodos []Nodo // un producto puede tener sub-componentes
 }
 
 // sumarArbol recorre un árbol de productos recursivamente

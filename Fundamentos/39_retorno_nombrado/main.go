@@ -35,7 +35,7 @@ func divisionNombrada(a, b float64) (resultado float64, err error) {
 	// "resultado" y "err" son variables en zero value (0 y nil)
 	if b == 0 {
 		err = fmt.Errorf("división por cero") // asignamos al nombre
-		return                                 // naked return: retorna resultado(0) y err
+		return                                // naked return: retorna resultado(0) y err
 	}
 	resultado = a / b // asignamos al nombre
 	return            // naked return: retorna resultado y nil

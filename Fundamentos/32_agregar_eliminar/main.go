@@ -25,8 +25,8 @@ type Producto struct {
 }
 
 type ItemCarrito struct {
-	Producto  Producto
-	Cantidad  int
+	Producto Producto
+	Cantidad int
 }
 
 // ─────────────────────────────────────────────────────────

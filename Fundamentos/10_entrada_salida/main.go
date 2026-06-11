@@ -39,19 +39,19 @@ func main() {
 	activo := true
 
 	fmt.Println("\n=== fmt.Printf con verbos ===")
-	fmt.Printf("Nombre: %s\n", nombre)      // %s → string
-	fmt.Printf("Edad: %d años\n", edad)     // %d → entero decimal
-	fmt.Printf("Saldo: $%.2f\n", saldo)     // %f → float, .2 = 2 decimales
-	fmt.Printf("Activo: %v\n", activo)      // %v → valor genérico (cualquier tipo)
-	fmt.Printf("Activo: %t\n", activo)      // %t → bool específico
-	fmt.Printf("Tipo: %T\n", saldo)         // %T → tipo de la variable
-	fmt.Printf("Binario: %b\n", 42)         // %b → binario
-	fmt.Printf("Octal: %o\n", 42)           // %o → octal
-	fmt.Printf("Hexadecimal: %x\n", 255)    // %x → hex minúscula
-	fmt.Printf("Hexadecimal: %X\n", 255)    // %X → hex mayúscula
+	fmt.Printf("Nombre: %s\n", nombre)         // %s → string
+	fmt.Printf("Edad: %d años\n", edad)        // %d → entero decimal
+	fmt.Printf("Saldo: $%.2f\n", saldo)        // %f → float, .2 = 2 decimales
+	fmt.Printf("Activo: %v\n", activo)         // %v → valor genérico (cualquier tipo)
+	fmt.Printf("Activo: %t\n", activo)         // %t → bool específico
+	fmt.Printf("Tipo: %T\n", saldo)            // %T → tipo de la variable
+	fmt.Printf("Binario: %b\n", 42)            // %b → binario
+	fmt.Printf("Octal: %o\n", 42)              // %o → octal
+	fmt.Printf("Hexadecimal: %x\n", 255)       // %x → hex minúscula
+	fmt.Printf("Hexadecimal: %X\n", 255)       // %X → hex mayúscula
 	fmt.Printf("Científico: %e\n", 123456.789) // %e → notación científica
-	fmt.Printf("Carácter: %c\n", 65)        // %c → caracter Unicode
-	fmt.Printf("Con comillas: %q\n", nombre) // %q → string con comillas
+	fmt.Printf("Carácter: %c\n", 65)           // %c → caracter Unicode
+	fmt.Printf("Con comillas: %q\n", nombre)   // %q → string con comillas
 
 	// Alineación y relleno
 	fmt.Println("\n=== Alineación con Printf ===")
@@ -118,26 +118,26 @@ func main() {
 
 	fmt.Println("\n=== Lectura de entrada (comentada para demo) ===")
 	fmt.Println("Para leer un entero: fmt.Scan(&miVariable)")
-	fmt.Println("Para leer con formato: fmt.Scanf('%d %s', &num, &texto)")
+	fmt.Printf("Para leer con formato: fmt.Scanf(%q, &num, &texto)\n", "%d %s")
 
 	/*
-	// EJEMPLO INTERACTIVO (descomentar para usar):
+		// EJEMPLO INTERACTIVO (descomentar para usar):
 
-	var n int
-	fmt.Print("Ingresá un número: ")
-	fmt.Scan(&n) // el & es el operador de dirección (referencia)
-	fmt.Printf("Ingresaste: %d\n", n)
+		var n int
+		fmt.Print("Ingresá un número: ")
+		fmt.Scan(&n) // el & es el operador de dirección (referencia)
+		fmt.Printf("Ingresaste: %d\n", n)
 
-	var nombreUsuario string
-	fmt.Print("Ingresá tu nombre: ")
-	fmt.Scan(&nombreUsuario) // Scan se detiene en espacios
-	fmt.Printf("Hola, %s!\n", nombreUsuario)
+		var nombreUsuario string
+		fmt.Print("Ingresá tu nombre: ")
+		fmt.Scan(&nombreUsuario) // Scan se detiene en espacios
+		fmt.Printf("Hola, %s!\n", nombreUsuario)
 
-	// Leer múltiples valores en una línea
-	var x, y int
-	fmt.Print("Ingresá dos números separados por espacio: ")
-	fmt.Scan(&x, &y)
-	fmt.Printf("Suma: %d\n", x+y)
+		// Leer múltiples valores en una línea
+		var x, y int
+		fmt.Print("Ingresá dos números separados por espacio: ")
+		fmt.Scan(&x, &y)
+		fmt.Printf("Suma: %d\n", x+y)
 	*/
 
 	// ─────────────────────────────────────────────────────────
@@ -161,12 +161,12 @@ func main() {
 	}
 
 	/*
-	// VERSIÓN INTERACTIVA con os.Stdin (descomentar para usar):
-	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Print("Escribí tu nombre completo: ")
-	scanner.Scan()
-	nombreCompleto := scanner.Text()
-	fmt.Printf("Hola, %s!\n", nombreCompleto)
+		// VERSIÓN INTERACTIVA con os.Stdin (descomentar para usar):
+		scanner := bufio.NewScanner(os.Stdin)
+		fmt.Print("Escribí tu nombre completo: ")
+		scanner.Scan()
+		nombreCompleto := scanner.Text()
+		fmt.Printf("Hola, %s!\n", nombreCompleto)
 	*/
 
 	// ─────────────────────────────────────────────────────────

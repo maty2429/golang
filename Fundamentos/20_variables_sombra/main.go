@@ -28,7 +28,7 @@ func main() {
 	{
 		// Esta := crea una NUEVA variable x en este scope.
 		// No modifica la x exterior.
-		x := "interior" // ← nueva variable, sombrea a la exterior
+		x := "interior"                        // ← nueva variable, sombrea a la exterior
 		fmt.Println("x dentro del bloque:", x) // "interior"
 	}
 
@@ -45,13 +45,13 @@ func main() {
 	fmt.Println("valor antes:", valor) // 10
 
 	{
-		valor := 99 // := → nueva variable LOCAL, sombrea a la exterior
+		valor := 99                         // := → nueva variable LOCAL, sombrea a la exterior
 		fmt.Println("dentro con :=", valor) // 99
 	}
 	fmt.Println("valor después de :=:", valor) // 10 (sin cambios!)
 
 	{
-		valor = 99 // = → modifica la variable EXTERIOR
+		valor = 99                          // = → modifica la variable EXTERIOR
 		fmt.Println("dentro con =:", valor) // 99
 	}
 	fmt.Println("valor después de =:", valor) // 99 (modificado!)
@@ -62,7 +62,7 @@ func main() {
 	fmt.Println("\n=== Sombra sobre variable global ===")
 	fmt.Println("global:", mensaje) // "soy global"
 
-	mensaje := "soy local" // := crea una variable LOCAL que sombrea a la global
+	mensaje := "soy local"                          // := crea una variable LOCAL que sombrea a la global
 	fmt.Println("local (sombrea global):", mensaje) // "soy local"
 
 	mostrarGlobal() // la función ve la global, no la local
@@ -77,9 +77,9 @@ func main() {
 
 	// VERSIÓN CON BUG DE SOMBRA:
 	if true {
-		resultado := calcular(5) // := crea una NUEVA variable local
+		resultado := calcular(5)                            // := crea una NUEVA variable local
 		fmt.Println("dentro del if, resultado:", resultado) // 25
-		_ = resultado // suprimir unused
+		_ = resultado                                       // suprimir unused
 	}
 	fmt.Println("resultado afuera del if:", resultado) // 0 ← BUG! no se modificó
 
@@ -87,7 +87,7 @@ func main() {
 
 	// VERSIÓN CORRECTA sin sombra:
 	if true {
-		resultado = calcular(5) // = modifica la variable externa
+		resultado = calcular(5)                             // = modifica la variable externa
 		fmt.Println("dentro del if, resultado:", resultado) // 25
 	}
 	fmt.Println("resultado afuera del if:", resultado) // 25 ← correcto!

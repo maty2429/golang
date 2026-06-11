@@ -109,18 +109,18 @@ func dividirBIEN(a, b float64) (float64, float64, error) {
 // ─────────────────────────────────────────────────────────
 
 type Pedido struct {
-	ID         int
-	Cliente    string
-	Items      []string
-	Subtotal   float64
-	Descuento  float64
-	Impuestos  float64
-	Total      float64
-	Estado     string
-	Notas      string
-	Direccion  string
-	Metodo     string
-	Tracking   string
+	ID        int
+	Cliente   string
+	Items     []string
+	Subtotal  float64
+	Descuento float64
+	Impuestos float64
+	Total     float64
+	Estado    string
+	Notas     string
+	Direccion string
+	Metodo    string
+	Tracking  string
 }
 
 // Aquí SÍ tiene sentido *Pedido:

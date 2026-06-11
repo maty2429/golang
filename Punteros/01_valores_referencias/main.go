@@ -50,8 +50,8 @@ func main() {
 	fmt.Println("\n=== Paso por VALOR (copia independiente) ===")
 
 	a := 10
-	b := a  // b es una COPIA de a, viven en direcciones distintas
-	b = 99  // modificar b NO afecta a a
+	b := a // b es una COPIA de a, viven en direcciones distintas
+	b = 99 // modificar b NO afecta a a
 
 	fmt.Printf("a = %d (sin cambios)\n", a)
 	fmt.Printf("b = %d (copia modificada)\n", b)
@@ -61,7 +61,7 @@ func main() {
 	type Punto struct{ X, Y int }
 
 	p1 := Punto{1, 2}
-	p2 := p1   // p2 es una COPIA completa de p1
+	p2 := p1 // p2 es una COPIA completa de p1
 	p2.X = 99
 
 	fmt.Printf("\np1 = %v (sin cambios)\n", p1)
@@ -88,16 +88,16 @@ func main() {
 
 	// SLICE: su header se copia, pero el array subyacente es compartido
 	slice1 := []int{1, 2, 3}
-	slice2 := slice1            // slice2 comparte el mismo array interno
-	slice2[0] = 999             // modifica el array compartido
+	slice2 := slice1 // slice2 comparte el mismo array interno
+	slice2[0] = 999  // modifica el array compartido
 
 	fmt.Printf("slice1 = %v (afectado! comparte array)\n", slice1)
 	fmt.Printf("slice2 = %v\n", slice2)
 
 	// MAP: siempre es una referencia
 	mapa1 := map[string]int{"a": 1}
-	mapa2 := mapa1    // mapa2 apunta al mismo map
-	mapa2["b"] = 2    // modifica el map original
+	mapa2 := mapa1 // mapa2 apunta al mismo map
+	mapa2["b"] = 2 // modifica el map original
 
 	fmt.Printf("\nmapa1 = %v (afectado! mismo map)\n", mapa1)
 	fmt.Printf("mapa2 = %v\n", mapa2)
@@ -105,11 +105,11 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	// DIRECCIÓN DE MEMORIA: ver dónde viven las variables
 	// ─────────────────────────────────────────────────────────
-	fmt.Println("\n=== Direcciones de memoria con %p ===")
+	fmt.Printf("\n=== Direcciones de memoria con %%p ===\n")
 
 	n1 := 100
 	n2 := 200
-	n3 := n1  // copia: nueva dirección
+	n3 := n1 // copia: nueva dirección
 
 	fmt.Printf("n1 → dirección: %p | valor: %d\n", &n1, n1)
 	fmt.Printf("n2 → dirección: %p | valor: %d\n", &n2, n2)

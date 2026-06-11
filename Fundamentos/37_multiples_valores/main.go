@@ -112,8 +112,8 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	fmt.Println("\n=== Ignorar valores con _ ===")
 
-	_, soloResto := dividir(17, 5)     // solo nos interesa el resto
-	soloCociente, _ := dividir(17, 5)  // solo nos interesa el cociente
+	_, soloResto := dividir(17, 5)    // solo nos interesa el resto
+	soloCociente, _ := dividir(17, 5) // solo nos interesa el cociente
 	fmt.Printf("Solo resto: %d\n", soloResto)
 	fmt.Printf("Solo cociente: %d\n", soloCociente)
 

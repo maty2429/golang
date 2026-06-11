@@ -19,17 +19,17 @@ func main() {
 	// pero puede usarse con diferentes tipos sin conversión explícita.
 	// Esto las hace mucho más flexibles.
 
-	const sinTipo = 42        // constante no tipada, "tipo ideal": integer
-	const sinTipoF = 3.14     // constante no tipada, "tipo ideal": float
-	const sinTipoS = "hola"   // constante no tipada, "tipo ideal": string
-	const sinTipoB = true     // constante no tipada, "tipo ideal": bool
+	const sinTipo = 42      // constante no tipada, "tipo ideal": integer
+	const sinTipoF = 3.14   // constante no tipada, "tipo ideal": float
+	const sinTipoS = "hola" // constante no tipada, "tipo ideal": string
+	const sinTipoB = true   // constante no tipada, "tipo ideal": bool
 
 	// Lo poderoso de las constantes no tipadas:
 	// podemos asignarlas a DISTINTOS tipos sin conversión
-	var x int = sinTipo       // funciona
-	var y int64 = sinTipo     // también funciona (sin conversión!)
-	var z float64 = sinTipo   // también funciona!
-	var w float32 = sinTipo   // ¡también!
+	var x int = sinTipo     // funciona
+	var y int64 = sinTipo   // también funciona (sin conversión!)
+	var z float64 = sinTipo // también funciona!
+	var w float32 = sinTipo // ¡también!
 
 	fmt.Println("=== Constantes NO tipadas ===")
 	fmt.Printf("int     x = %d (tipo: %T)\n", x, x)
@@ -74,8 +74,8 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	// Caso clásico: usamos la constante en una expresión
 
-	const untyped = 100      // no tipada
-	const typed int = 100    // tipada
+	const untyped = 100   // no tipada
+	const typed int = 100 // tipada
 
 	var resultado64 float64
 

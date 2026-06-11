@@ -20,11 +20,11 @@ func main() {
 	a, b := 17, 5
 
 	fmt.Println("=== Operadores Aritméticos ===")
-	fmt.Printf("%d + %d = %d\n", a, b, a+b)   // suma
-	fmt.Printf("%d - %d = %d\n", a, b, a-b)   // resta
-	fmt.Printf("%d * %d = %d\n", a, b, a*b)   // multiplicación
-	fmt.Printf("%d / %d = %d\n", a, b, a/b)   // división ENTERA (descarta decimales)
-	fmt.Printf("%d %% %d = %d\n", a, b, a%b)  // módulo (resto de la división)
+	fmt.Printf("%d + %d = %d\n", a, b, a+b)  // suma
+	fmt.Printf("%d - %d = %d\n", a, b, a-b)  // resta
+	fmt.Printf("%d * %d = %d\n", a, b, a*b)  // multiplicación
+	fmt.Printf("%d / %d = %d\n", a, b, a/b)  // división ENTERA (descarta decimales)
+	fmt.Printf("%d %% %d = %d\n", a, b, a%b) // módulo (resto de la división)
 
 	// División flotante
 	fa, fb := float64(a), float64(b)
@@ -36,11 +36,16 @@ func main() {
 	// Son atajos: x += 5 es lo mismo que x = x + 5
 	x := 10
 	fmt.Println("\n=== Asignación combinada (x inicial = 10) ===")
-	x += 5; fmt.Println("x += 5  →", x)  // 15
-	x -= 3; fmt.Println("x -= 3  →", x)  // 12
-	x *= 2; fmt.Println("x *= 2  →", x)  // 24
-	x /= 4; fmt.Println("x /= 4  →", x)  // 6
-	x %= 4; fmt.Println("x %= 4  →", x)  // 2
+	x += 5
+	fmt.Println("x += 5  →", x) // 15
+	x -= 3
+	fmt.Println("x -= 3  →", x) // 12
+	x *= 2
+	fmt.Println("x *= 2  →", x) // 24
+	x /= 4
+	fmt.Println("x /= 4  →", x) // 6
+	x %= 4
+	fmt.Println("x %= 4  →", x) // 2
 
 	// ─────────────────────────────────────────────────────────
 	// INCREMENTO Y DECREMENTO
@@ -50,9 +55,12 @@ func main() {
 	// Solo se puede usar solo: x++ o x-- en su propia línea.
 	contador := 0
 	fmt.Println("\n=== Incremento y decremento ===")
-	contador++; fmt.Println("contador++:", contador) // 1
-	contador++; fmt.Println("contador++:", contador) // 2
-	contador--; fmt.Println("contador--:", contador) // 1
+	contador++
+	fmt.Println("contador++:", contador) // 1
+	contador++
+	fmt.Println("contador++:", contador) // 2
+	contador--
+	fmt.Println("contador--:", contador) // 1
 
 	// ─────────────────────────────────────────────────────────
 	// OPERADORES DE COMPARACIÓN
@@ -150,7 +158,7 @@ func main() {
 	// Aplicación real: sistema de permisos con bits
 	// Cada bit representa un permiso diferente
 	const (
-		LEER    = 1 << 0 // bit 0 → 001 → 1
+		LEER     = 1 << 0 // bit 0 → 001 → 1
 		ESCRIBIR = 1 << 1 // bit 1 → 010 → 2
 		EJECUTAR = 1 << 2 // bit 2 → 100 → 4
 	)
@@ -175,10 +183,10 @@ func main() {
 	// Consejo: ante la duda, usá paréntesis para dejar claro el orden.
 
 	fmt.Println("\n=== Precedencia de operadores ===")
-	r1 := 2 + 3*4           // 14 (primero 3*4=12, luego 2+12)
-	r2 := (2 + 3) * 4       // 20 (paréntesis primero)
-	r3 := 10 > 5 && 3 < 7   // true (ambas comparaciones true)
-	r4 := 10 > 5 || 3 > 7   // true (la primera es true)
+	r1 := 2 + 3*4         // 14 (primero 3*4=12, luego 2+12)
+	r2 := (2 + 3) * 4     // 20 (paréntesis primero)
+	r3 := 10 > 5 && 3 < 7 // true (ambas comparaciones true)
+	r4 := 10 > 5 || 3 > 7 // true (la primera es true)
 	fmt.Printf("2 + 3*4   = %d\n", r1)
 	fmt.Printf("(2+3) * 4 = %d\n", r2)
 	fmt.Printf("10>5 && 3<7 = %v\n", r3)

@@ -179,8 +179,8 @@ func (a Animal) Describir() string {
 }
 
 type Robot struct {
-	Modelo   string
-	Version  int
+	Modelo  string
+	Version int
 }
 
 // Receptor PUNTERO → solo *Robot implementa Describible
@@ -297,9 +297,9 @@ func main() {
 	// *Animal también lo implementa
 	// *Robot implementa porque Describir tiene receptor *Robot
 	var describibles []Describible
-	describibles = append(describibles, gato)   // Animal (valor) → OK
-	describibles = append(describibles, perro)  // *Animal → OK
-	describibles = append(describibles, robot)  // *Robot → OK
+	describibles = append(describibles, gato)  // Animal (valor) → OK
+	describibles = append(describibles, perro) // *Animal → OK
+	describibles = append(describibles, robot) // *Robot → OK
 	// describibles = append(describibles, Robot{}) → ERROR: Robot no implementa Describible
 
 	for _, d := range describibles {

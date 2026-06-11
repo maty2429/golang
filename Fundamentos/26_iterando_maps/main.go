@@ -120,10 +120,10 @@ func main() {
 	fmt.Println("\n=== Modificar durante iteración (eliminar) ===")
 
 	stock := map[string]int{
-		"notebook": 3,
-		"mouse":    0,
-		"teclado":  5,
-		"monitor":  0,
+		"notebook":    3,
+		"mouse":       0,
+		"teclado":     5,
+		"monitor":     0,
 		"auriculares": 2,
 	}
 
@@ -238,12 +238,12 @@ func main() {
 	fmt.Println("\n=== Caso: estadísticas de ventas ===")
 
 	ventas := map[string]float64{
-		"enero":     15000.50,
-		"febrero":   18200.00,
-		"marzo":     12000.75,
-		"abril":     22000.00,
-		"mayo":      19500.25,
-		"junio":     25000.00,
+		"enero":   15000.50,
+		"febrero": 18200.00,
+		"marzo":   12000.75,
+		"abril":   22000.00,
+		"mayo":    19500.25,
+		"junio":   25000.00,
 	}
 
 	var totalVentas, maxVenta, minVenta float64

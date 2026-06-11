@@ -1,0 +1,6 @@
+# Configuración del IDE (GoLand / IntelliJ)
+.idea/
+
+# Binarios compilados
+*.exe
+*.out

@@ -241,9 +241,9 @@ func main() {
 
 	type Estado string
 	const (
-		Rojo    Estado = "rojo"
+		Rojo     Estado = "rojo"
 		Amarillo Estado = "amarillo"
-		Verde   Estado = "verde"
+		Verde    Estado = "verde"
 	)
 
 	semaforo := Rojo

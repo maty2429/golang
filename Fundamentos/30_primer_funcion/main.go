@@ -63,7 +63,7 @@ func mostrarProducto(nombre string, precio float64, stock int) {
 }
 
 func main() {
-	fmt.Println("=== Mi primera función en Go ===\n")
+	fmt.Printf("=== Mi primera función en Go ===\n\n")
 
 	// Llamar una función: escribís el nombre seguido de ()
 	saludar()

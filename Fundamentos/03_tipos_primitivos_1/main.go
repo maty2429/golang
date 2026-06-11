@@ -23,11 +23,11 @@ func main() {
 	// Regla práctica: usa "int" para la mayoría de los casos.
 	// Go elegirá automáticamente 32 o 64 bits según tu sistema.
 
-	var i8 int8 = 127          // 8 bits  → rango: -128 a 127
-	var i16 int16 = 32767      // 16 bits → rango: -32768 a 32767
-	var i32 int32 = 2147483647 // 32 bits → rango: -2.1B a 2.1B
+	var i8 int8 = 127                   // 8 bits  → rango: -128 a 127
+	var i16 int16 = 32767               // 16 bits → rango: -32768 a 32767
+	var i32 int32 = 2147483647          // 32 bits → rango: -2.1B a 2.1B
 	var i64 int64 = 9223372036854775807 // 64 bits → enorme
-	var i int = 42             // int → 32 o 64 bits según el sistema (el más común)
+	var i int = 42                      // int → 32 o 64 bits según el sistema (el más común)
 
 	fmt.Println("=== Enteros con signo ===")
 	fmt.Printf("int8  (máx): %d\n", i8)
@@ -49,10 +49,10 @@ func main() {
 	// El prefijo "u" significa "unsigned" (sin signo).
 	// Al no tener negativos, el rango positivo se duplica.
 
-	var u8 uint8 = 255        // 8 bits → rango: 0 a 255
-	var u16 uint16 = 65535    // 16 bits → rango: 0 a 65535
+	var u8 uint8 = 255          // 8 bits → rango: 0 a 255
+	var u16 uint16 = 65535      // 16 bits → rango: 0 a 65535
 	var u32 uint32 = 4294967295 // 32 bits → 0 a ~4 billones
-	var u uint = 42           // uint → 32 o 64 bits según sistema
+	var u uint = 42             // uint → 32 o 64 bits según sistema
 
 	fmt.Println("\n=== Enteros sin signo (unsigned) ===")
 	fmt.Printf("uint8  (máx): %d\n", u8)
@@ -86,7 +86,7 @@ func main() {
 	// float64 es el más usado porque es más preciso.
 	// Los literales decimales en Go son float64 por defecto.
 
-	var f32 float32 = 3.14          // 32 bits, ~6-7 dígitos de precisión
+	var f32 float32 = 3.14              // 32 bits, ~6-7 dígitos de precisión
 	var f64 float64 = 3.141592653589793 // 64 bits, ~15-17 dígitos de precisión
 
 	fmt.Println("\n=== Números decimales (float) ===")
@@ -108,9 +108,9 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	// NÚMEROS ESPECIALES EN FLOAT
 	// ─────────────────────────────────────────────────────────
-	positiveInf := math.Inf(1)   // +Infinito
-	negativeInf := math.Inf(-1)  // -Infinito
-	notANumber := math.NaN()     // No es un número (resultado de 0/0, etc.)
+	positiveInf := math.Inf(1)  // +Infinito
+	negativeInf := math.Inf(-1) // -Infinito
+	notANumber := math.NaN()    // No es un número (resultado de 0/0, etc.)
 
 	fmt.Println("\n=== Valores especiales float ===")
 	fmt.Println("+Infinito:", positiveInf)

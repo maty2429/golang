@@ -97,9 +97,9 @@ func main() {
 	// LLAMAR CON DIFERENTE CANTIDAD DE ARGUMENTOS
 	// ─────────────────────────────────────────────────────────
 	fmt.Println("\n=== sumar con distintas cantidades ===")
-	fmt.Println("sumar():           ", sumar())           // 0
-	fmt.Println("sumar(5):          ", sumar(5))          // 5
-	fmt.Println("sumar(1,2,3):      ", sumar(1, 2, 3))    // 6
+	fmt.Println("sumar():           ", sumar())              // 0
+	fmt.Println("sumar(5):          ", sumar(5))             // 5
+	fmt.Println("sumar(1,2,3):      ", sumar(1, 2, 3))       // 6
 	fmt.Println("sumar(1,2,3,4,5):  ", sumar(1, 2, 3, 4, 5)) // 15
 
 	// ─────────────────────────────────────────────────────────

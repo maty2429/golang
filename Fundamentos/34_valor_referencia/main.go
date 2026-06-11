@@ -155,7 +155,7 @@ func main() {
 	}
 	fmt.Println("Antes:", precios)
 
-	agregarPrecio(precios, "Mouse", 20.00)     // modifica el map original
+	agregarPrecio(precios, "Mouse", 20.00) // modifica el map original
 	agregarPrecio(precios, "Teclado", 60.00)
 
 	fmt.Println("Después:", precios, "← SÍ modificado!")

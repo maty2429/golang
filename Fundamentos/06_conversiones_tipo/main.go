@@ -110,7 +110,7 @@ func main() {
 
 	fmt.Println("\n=== ⚠️ Trampa: string(int) ===")
 	n := 65
-	malConversión := string(rune(n)) // convierte 65 al caracter Unicode 'A'
+	malConversión := string(rune(n))   // convierte 65 al caracter Unicode 'A'
 	buenaConversión := strconv.Itoa(n) // convierte al texto "65"
 
 	fmt.Printf("string(rune(%d)) = '%s'  ← interpreta como Unicode!\n", n, malConversión)

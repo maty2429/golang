@@ -69,8 +69,8 @@ func main() {
 	// make([]tipo, longitud, capacidad)
 	// capacidad es opcional, por defecto igual a longitud
 
-	s2 := make([]int, 5)          // len=5, cap=5, todos en 0
-	s3 := make([]int, 3, 10)      // len=3, cap=10 (espacio pre-reservado)
+	s2 := make([]int, 5)     // len=5, cap=5, todos en 0
+	s3 := make([]int, 3, 10) // len=3, cap=10 (espacio pre-reservado)
 	fmt.Printf("\nmake([]int,5): %v | len=%d | cap=%d\n", s2, len(s2), cap(s2))
 	fmt.Printf("make([]int,3,10): %v | len=%d | cap=%d\n", s3, len(s3), cap(s3))
 
@@ -102,10 +102,10 @@ func main() {
 	nums := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 	fmt.Println("\n=== Slicing ===")
 	fmt.Println("nums:", nums)
-	fmt.Println("nums[2:5]:", nums[2:5])   // [2 3 4]
-	fmt.Println("nums[:3]:", nums[:3])      // [0 1 2]
-	fmt.Println("nums[7:]:", nums[7:])      // [7 8 9]
-	fmt.Println("nums[:]:", nums[:])        // todos
+	fmt.Println("nums[2:5]:", nums[2:5]) // [2 3 4]
+	fmt.Println("nums[:3]:", nums[:3])   // [0 1 2]
+	fmt.Println("nums[7:]:", nums[7:])   // [7 8 9]
+	fmt.Println("nums[:]:", nums[:])     // todos
 
 	// ─────────────────────────────────────────────────────────
 	// CUIDADO: Slices comparten memoria con el array subyacente
@@ -114,7 +114,7 @@ func main() {
 	vista := base[1:4] // comparte memoria con base
 	vista[0] = 99      // modifica base también!
 	fmt.Println("\n=== Slice comparte memoria ===")
-	fmt.Println("base:", base)  // [1 99 3 4 5] ← modificado!
+	fmt.Println("base:", base)   // [1 99 3 4 5] ← modificado!
 	fmt.Println("vista:", vista) // [99 3 4]
 
 	// Para una copia independiente, usar copy()
@@ -140,7 +140,7 @@ func main() {
 	fmt.Println("\n=== Eliminar elemento ===")
 	fmt.Println("Original:", frutas)
 
-	i := 2 // índice de "naranja"
+	i := 2                                       // índice de "naranja"
 	frutas = append(frutas[:i], frutas[i+1:]...) // elimina índice 2
 	fmt.Println("Sin 'naranja':", frutas)
 
@@ -196,8 +196,8 @@ func main() {
 	var stack []int
 	stack = append(stack, 1, 2, 3) // push
 	fmt.Println("Stack:", stack)
-	top := stack[len(stack)-1]              // peek
-	stack = stack[:len(stack)-1]            // pop
+	top := stack[len(stack)-1]   // peek
+	stack = stack[:len(stack)-1] // pop
 	fmt.Printf("pop: top=%d, stack=%v\n", top, stack)
 
 	// Queue (cola): enqueue con append, dequeue cortando

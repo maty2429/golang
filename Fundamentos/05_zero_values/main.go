@@ -98,9 +98,9 @@ func main() {
 	var nombres [4]string
 
 	fmt.Println("\n=== Zero Values en arrays ===")
-	fmt.Println("Array de ints:", numeros)     // [0 0 0 0 0]
-	fmt.Println("Array de bools:", flags)       // [false false false]
-	fmt.Println("Array de strings:", nombres)   // [   ] (4 strings vacíos)
+	fmt.Println("Array de ints:", numeros)    // [0 0 0 0 0]
+	fmt.Println("Array de bools:", flags)     // [false false false]
+	fmt.Println("Array de strings:", nombres) // [   ] (4 strings vacíos)
 
 	// ─────────────────────────────────────────────────────────
 	// ZERO VALUES EN PUNTEROS, SLICES, MAPS, CHANNELS
@@ -134,7 +134,7 @@ func main() {
 		CandidatoA int
 		CandidatoB int
 		CandidatoC int
-		VotosNulos  int
+		VotosNulos int
 	}
 
 	var eleccion ResultadoEleccion // todos en 0 por zero value

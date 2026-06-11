@@ -20,10 +20,10 @@ type Cuenta struct {
 }
 
 type Transaccion struct {
-	Tipo   string  // "depósito", "retiro", "transferencia"
-	Monto  float64
-	Desde  *Cuenta // puede ser nil (en depósitos)
-	Hacia  *Cuenta // puede ser nil (en retiros)
+	Tipo  string // "depósito", "retiro", "transferencia"
+	Monto float64
+	Desde *Cuenta // puede ser nil (en depósitos)
+	Hacia *Cuenta // puede ser nil (en retiros)
 }
 
 // ─────────────────────────────────────────────────────────

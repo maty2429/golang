@@ -11,7 +11,7 @@ import "fmt"
 // Este archivo muestra los errores más frecuentes y cómo evitarlos.
 
 func main() {
-	fmt.Println("=== Errores comunes en Go y cómo evitarlos ===\n")
+	fmt.Printf("=== Errores comunes en Go y cómo evitarlos ===\n\n")
 
 	// ─────────────────────────────────────────────────────────
 	// ERROR 1: Variable declarada pero no usada
@@ -96,9 +96,9 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	// Cuando dividís dos enteros en Go, el resultado es entero.
 	// Los decimales se descartan (NO se redondea).
-	cociente := 7 / 2       // resultado: 3, NO 3.5
-	modulo := 7 % 2         // resultado: 1 (el resto)
-	flotante := 7.0 / 2.0   // resultado: 3.5 (división float)
+	cociente := 7 / 2     // resultado: 3, NO 3.5
+	modulo := 7 % 2       // resultado: 1 (el resto)
+	flotante := 7.0 / 2.0 // resultado: 3.5 (división float)
 
 	fmt.Printf("\nERROR 8 - División entera:\n")
 	fmt.Printf("  7 / 2 = %d (entero, trunca)\n", cociente)

@@ -200,10 +200,10 @@ func main() {
 		cliente string
 	}{
 		{1, 150.00, "Ana"},
-		{2, -50.00, "Carlos"},  // monto inválido
-		{3, 200.00, ""},        // cliente vacío
+		{2, -50.00, "Carlos"}, // monto inválido
+		{3, 200.00, ""},       // cliente vacío
 		{4, 75.00, "Mia"},
-		{5, 0.00, "Juan"},      // monto cero
+		{5, 0.00, "Juan"}, // monto cero
 	}
 
 	fmt.Println("Procesando pedidos:")

@@ -168,9 +168,9 @@ salir:
 	fmt.Println("\n=== Game loop (simulado) ===")
 
 	type EstadoJuego struct {
-		vida     int
-		nivel    int
-		puntos   int
+		vida      int
+		nivel     int
+		puntos    int
 		terminado bool
 	}
 

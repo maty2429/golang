@@ -51,7 +51,7 @@ func volumenCaja(largo, ancho, alto float64) float64 {
 // En Go esto es completamente válido.
 // El compilador lee todo el paquete antes de compilar.
 func main() {
-	fmt.Println("=== Declarando y llamando funciones ===\n")
+	fmt.Printf("=== Declarando y llamando funciones ===\n\n")
 
 	// ─────────────────────────────────────────────────────────
 	// 1. LLAMADA SIMPLE (ignorando el retorno)

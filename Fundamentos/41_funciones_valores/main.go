@@ -30,7 +30,7 @@ type Producto struct {
 // FUNCIONES COMO VALORES
 // ─────────────────────────────────────────────────────────
 
-func aplicarIVA(p float64) float64      { return p * 1.21 }
+func aplicarIVA(p float64) float64         { return p * 1.21 }
 func aplicarDescuento10(p float64) float64 { return p * 0.90 }
 func aplicarDescuento20(p float64) float64 { return p * 0.80 }
 func sinModificacion(p float64) float64    { return p }

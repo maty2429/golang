@@ -73,7 +73,7 @@ func main() {
 	fmt.Printf("n antes:   %d\n", n)
 	fmt.Printf("*p antes:  %d\n", *p)
 
-	*p = 99  // asignación MEDIANTE el puntero → modifica 'n'
+	*p = 99 // asignación MEDIANTE el puntero → modifica 'n'
 
 	fmt.Printf("n después: %d  (modificado a través del puntero!)\n", n)
 	fmt.Printf("*p después: %d\n", *p) // apunta al mismo lugar, ve el nuevo valor
@@ -93,13 +93,13 @@ func main() {
 	fmt.Printf("pX := &x  → %p (apunta a x)\n", pX)
 
 	// Forma 3: new() → aloca memoria en el heap y retorna un puntero
-	pNew := new(int)   // aloca un int en heap, inicializado a 0
+	pNew := new(int) // aloca un int en heap, inicializado a 0
 	*pNew = 77
 	fmt.Printf("pNew := new(int) → %p → valor: %d\n", pNew, *pNew)
 
 	// Forma 4: & a un literal de struct (muy común en Go)
 	type Punto struct{ X, Y int }
-	pPunto := &Punto{3, 4}  // aloca en heap y retorna *Punto
+	pPunto := &Punto{3, 4} // aloca en heap y retorna *Punto
 	fmt.Printf("pPunto := &Punto{3,4} → %p → valor: %v\n", pPunto, *pPunto)
 
 	// ─────────────────────────────────────────────────────────
@@ -107,12 +107,12 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	fmt.Println("\n=== * en el tipo vs * en la expresión ===")
 
-	var s *string       // * en el TIPO: "s es un puntero a string"
+	var s *string // * en el TIPO: "s es un puntero a string"
 	texto := "hola"
-	s = &texto          // & en expresión: "dame la dirección de texto"
+	s = &texto // & en expresión: "dame la dirección de texto"
 	fmt.Printf("*s = '%s'  (usamos * para obtener el valor)\n", *s)
 
-	*s = "modificado"   // * en expresión: "escribir en la dirección"
+	*s = "modificado" // * en expresión: "escribir en la dirección"
 	fmt.Printf("texto = '%s'  (el original cambió!)\n", texto)
 
 	// ─────────────────────────────────────────────────────────
@@ -142,14 +142,14 @@ func main() {
 	fmt.Println("\n=== Puntero a puntero (**T) ===")
 
 	valor := 42
-	pv := &valor    // *int: apunta a valor
-	ppv := &pv      // **int: apunta al puntero
+	pv := &valor // *int: apunta a valor
+	ppv := &pv   // **int: apunta al puntero
 
 	fmt.Printf("valor     = %d\n", valor)
 	fmt.Printf("*pv       = %d  (un nivel de indirección)\n", *pv)
 	fmt.Printf("**ppv     = %d  (dos niveles de indirección)\n", **ppv)
 
-	**ppv = 999  // modifica a través de dos niveles
+	**ppv = 999 // modifica a través de dos niveles
 	fmt.Printf("valor después: %d\n", valor)
 	// En la práctica, **T se usa muy poco. Puede confundir.
 
@@ -171,7 +171,7 @@ func main() {
 	fmt.Printf("(*pp).Edad = %d  (equivalente explícito)\n", (*pp).Edad)
 
 	// Modificar campo a través del puntero
-	pp.Edad = 29  // equivale a: (*pp).Edad = 29
+	pp.Edad = 29 // equivale a: (*pp).Edad = 29
 	fmt.Printf("persona.Edad después: %d\n", persona.Edad)
 
 	// ─────────────────────────────────────────────────────────
@@ -187,7 +187,7 @@ func main() {
 }
 
 func depositar(saldo *float64, monto float64) {
-	*saldo += monto  // modifica el saldo original
+	*saldo += monto // modifica el saldo original
 }
 
 func retirar(saldo *float64, monto float64) error {

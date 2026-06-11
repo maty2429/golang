@@ -47,20 +47,20 @@ type PerfilV2 struct {
 // ─────────────────────────────────────────────────────────
 // En Go no podés hacer &42 directamente (solo se puede hacer
 // & a una variable). Estos helpers lo simplifican.
-func ptrInt(v int) *int         { return &v }
+func ptrInt(v int) *int           { return &v }
 func ptrFloat(v float64) *float64 { return &v }
-func ptrBool(v bool) *bool       { return &v }
-func ptrString(v string) *string { return &v }
+func ptrBool(v bool) *bool        { return &v }
+func ptrString(v string) *string  { return &v }
 
 // ─────────────────────────────────────────────────────────
 // PRODUCTO CON CAMPOS OPCIONALES
 // ─────────────────────────────────────────────────────────
 type Producto struct {
-	Nombre      string
-	Precio      float64
-	Stock       *int     // nil = "no se sabe el stock"
+	Nombre       string
+	Precio       float64
+	Stock        *int     // nil = "no se sabe el stock"
 	PrecioOferta *float64 // nil = "no está en oferta"
-	Descripcion *string  // nil = "sin descripción"
+	Descripcion  *string  // nil = "sin descripción"
 }
 
 func (p Producto) Info() string {
@@ -105,17 +105,17 @@ func main() {
 	vip1 := true
 	perfilAna := PerfilV2{
 		Nombre:    "Ana",
-		Edad:      &edad1,    // tiene valor: 28
-		Descuento: &desc1,    // tiene valor: 15%
-		VIP:       &vip1,     // tiene valor: true
+		Edad:      &edad1, // tiene valor: 28
+		Descuento: &desc1, // tiene valor: 15%
+		VIP:       &vip1,  // tiene valor: true
 	}
 
 	// Carlos no ingresó datos opcionales
 	perfilCarlos := PerfilV2{
 		Nombre:    "Carlos",
-		Edad:      nil,  // no ingresó edad
-		Descuento: nil,  // no tiene descuento
-		VIP:       nil,  // no sabemos
+		Edad:      nil, // no ingresó edad
+		Descuento: nil, // no tiene descuento
+		VIP:       nil, // no sabemos
 	}
 
 	// Bot/sistema con edad explícita = 0 (podría ser un caso especial)
@@ -186,9 +186,9 @@ func main() {
 	// Con *T podemos saber exactamente qué campos actualizar.
 
 	type ActualizarProducto struct {
-		Nombre  *string  // nil = no cambiar
-		Precio  *float64 // nil = no cambiar
-		Stock   *int     // nil = no cambiar
+		Nombre *string  // nil = no cambiar
+		Precio *float64 // nil = no cambiar
+		Stock  *int     // nil = no cambiar
 	}
 
 	// Actualización 1: solo precio

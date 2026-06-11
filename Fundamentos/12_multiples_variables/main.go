@@ -60,10 +60,10 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	// Agrupa variables que pertenecen al mismo concepto.
 	var (
-		servidorHost string = "localhost"
-		servidorPort int    = 8080
-		maxConexiones int   = 100
-		timeout       int   = 30
+		servidorHost  string = "localhost"
+		servidorPort  int    = 8080
+		maxConexiones int    = 100
+		timeout       int    = 30
 	)
 
 	fmt.Println("\n=== Bloque var para configuración ===")
@@ -193,7 +193,7 @@ func datosPersona() (string, string, int) {
 
 // Función con retorno nombrado
 func calcularRectangulo(largo, ancho int) (area int, perimetro int) {
-	area = largo * ancho          // asignamos a los nombres de retorno
+	area = largo * ancho // asignamos a los nombres de retorno
 	perimetro = 2 * (largo + ancho)
 	return // "naked return": retorna los valores nombrados
 }
@@ -205,4 +205,3 @@ func operacionRiesgosa(n int) (string, error) {
 	}
 	return fmt.Sprintf("procesado: %d", n*2), nil
 }
-

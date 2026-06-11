@@ -14,18 +14,18 @@ import "fmt"
 // Veremos la diferencia y cuándo usar cada uno.
 
 type Producto struct {
-	ID       int
-	Nombre   string
-	Precio   float64
-	Stock    int
+	ID        int
+	Nombre    string
+	Precio    float64
+	Stock     int
 	Categoria string
 }
 
 type Orden struct {
-	ID       int
-	Cliente  string
-	Items    []ItemOrden
-	Enviada  bool
+	ID      int
+	Cliente string
+	Items   []ItemOrden
+	Enviada bool
 }
 
 type ItemOrden struct {
