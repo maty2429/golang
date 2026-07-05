@@ -132,8 +132,7 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	fmt.Println("\n=== Error típico 2: confundir el puntero con el valor ===")
 
-	a := 42
-	pa := &a
+	pa := new(42) // Go 1.26+: new(valor) crea el puntero ya inicializado en 42
 
 	fmt.Printf("pa   = %p  (dirección)\n", pa)
 	fmt.Printf("*pa  = %d  (valor)\n", *pa)

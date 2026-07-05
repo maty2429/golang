@@ -43,14 +43,16 @@ type PerfilV2 struct {
 }
 
 // ─────────────────────────────────────────────────────────
-// HELPERS para crear punteros a literales fácilmente
+// PUNTEROS A LITERALES: new(valor)
 // ─────────────────────────────────────────────────────────
 // En Go no podés hacer &42 directamente (solo se puede hacer
-// & a una variable). Estos helpers lo simplifican.
-func ptrInt(v int) *int           { return &v }
-func ptrFloat(v float64) *float64 { return &v }
-func ptrBool(v bool) *bool        { return &v }
-func ptrString(v string) *string  { return &v }
+// & a una variable). Desde Go 1.26, new(valor) resuelve esto:
+//   new(42)   → *int apuntando a 42
+//   new(0.15) → *float64 apuntando a 0.15
+//   new(true) → *bool apuntando a true
+// Antes de Go 1.26 se usaban helpers tipo:
+//   func ptrInt(v int) *int { return &v }
+// Si ves eso en código viejo o tutoriales, es lo mismo que new(v).
 
 // ─────────────────────────────────────────────────────────
 // PRODUCTO CON CAMPOS OPCIONALES
@@ -100,14 +102,11 @@ func main() {
 	fmt.Println("\n=== Solución: *T para distinguir ausencia ===")
 
 	// Ana ingresó todos los datos
-	edad1 := 28
-	desc1 := 0.15
-	vip1 := true
 	perfilAna := PerfilV2{
 		Nombre:    "Ana",
-		Edad:      &edad1, // tiene valor: 28
-		Descuento: &desc1, // tiene valor: 15%
-		VIP:       &vip1,  // tiene valor: true
+		Edad:      new(28),   // tiene valor: 28
+		Descuento: new(0.15), // tiene valor: 15%
+		VIP:       new(true), // tiene valor: true
 	}
 
 	// Carlos no ingresó datos opcionales
@@ -119,10 +118,9 @@ func main() {
 	}
 
 	// Bot/sistema con edad explícita = 0 (podría ser un caso especial)
-	edadBot := 0
 	perfilBot := PerfilV2{
 		Nombre: "BotUsuario",
-		Edad:   &edadBot, // sí ingresó, y es 0
+		Edad:   new(0), // sí ingresó, y es 0
 	}
 
 	for _, p := range []PerfilV2{perfilAna, perfilCarlos, perfilBot} {
@@ -149,17 +147,13 @@ func main() {
 	// ─────────────────────────────────────────────────────────
 	fmt.Println("\n=== Producto con campos opcionales ===")
 
-	stock10 := 10
-	oferta999 := 999.00
-	desc := "La mejor notebook del mercado"
-
 	productos := []Producto{
 		{
 			Nombre:       "Notebook Pro",
 			Precio:       1500.00,
-			Stock:        &stock10,
-			PrecioOferta: &oferta999,
-			Descripcion:  &desc,
+			Stock:        new(10),
+			PrecioOferta: new(999.00),
+			Descripcion:  new("La mejor notebook del mercado"),
 		},
 		{
 			Nombre: "Mouse",
@@ -169,7 +163,7 @@ func main() {
 		{
 			Nombre: "Teclado",
 			Precio: 75.50,
-			Stock:  ptrInt(0), // sabemos que hay 0 (diferente a nil!)
+			Stock:  new(0), // sabemos que hay 0 (diferente a nil!)
 		},
 	}
 
@@ -193,13 +187,13 @@ func main() {
 
 	// Actualización 1: solo precio
 	update1 := ActualizarProducto{
-		Precio: ptrFloat(1399.99),
+		Precio: new(1399.99),
 	}
 
 	// Actualización 2: precio y stock
 	update2 := ActualizarProducto{
-		Precio: ptrFloat(1200.00),
-		Stock:  ptrInt(15),
+		Precio: new(1200.00),
+		Stock:  new(15),
 	}
 
 	aplicarActualizacion := func(p *Producto, u ActualizarProducto) {
@@ -221,18 +215,18 @@ func main() {
 	fmt.Printf("Update2 (precio+stock): %s\n", productos[0].Info())
 
 	// ─────────────────────────────────────────────────────────
-	// HELPERS: ptrInt, ptrFloat, etc.
+	// CÓMO CREAR PUNTEROS A LITERALES
 	// ─────────────────────────────────────────────────────────
-	fmt.Println("\n=== Por qué necesitamos helpers ===")
+	fmt.Println("\n=== Punteros a literales ===")
 	fmt.Println("En Go, NO podés escribir: &42  o  &\"hola\"")
 	fmt.Println("Solo podés hacer & de una variable.")
 	fmt.Println()
-	fmt.Println("Por eso se crean helpers:")
-	fmt.Println("  func ptrInt(v int) *int { return &v }")
-	fmt.Println("  uso: campo = ptrInt(42)  ← limpio y conveniente")
+	fmt.Println("Desde Go 1.26: new(valor) lo resuelve directo:")
+	fmt.Println("  campo = new(42)  ← puntero ya inicializado")
 	fmt.Println()
-	fmt.Println("Desde Go 1.18 se puede generalizar con generics:")
-	fmt.Println("  func ptr[T any](v T) *T { return &v }")
+	fmt.Println("En código anterior a 1.26 vas a ver helpers equivalentes:")
+	fmt.Println("  func ptrInt(v int) *int { return &v }")
+	fmt.Println("  o con generics: func ptr[T any](v T) *T { return &v }")
 
 	// ─────────────────────────────────────────────────────────
 	// RESUMEN

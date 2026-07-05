@@ -4,3 +4,6 @@
 # Binarios compilados
 *.exe
 *.out
+
+# Archivos de macOS
+.DS_Store

@@ -244,14 +244,16 @@ func main() {
 	// fl := l.(*FileLogger)  → panic si l no es *FileLogger
 
 	// ─────────────────────────────────────────────────────────
-	// ERRORS.AS: extraer tipo de error específico
+	// ERRORS.ASTYPE: extraer tipo de error específico
 	// ─────────────────────────────────────────────────────────
-	fmt.Println("\n=== errors.As: extraer tipo de error ===")
+	// errors.AsType[T] (Go 1.26+) es la forma moderna de errors.As:
+	// busca en la cadena de errores uno del tipo T y lo retorna con ok.
+	// Maneja bien el nil trap: si no hay match, ok es false.
+	fmt.Println("\n=== errors.AsType: extraer tipo de error ===")
 
 	err := consultarDB("")
 	if err != nil {
-		var dbErr *ErrorDB
-		if errors.As(err, &dbErr) {
+		if dbErr, ok := errors.AsType[*ErrorDB](err); ok {
 			fmt.Printf("  Error de base de datos: tabla='%s', op='%s'\n",
 				dbErr.Tabla, dbErr.Op)
 		}
@@ -271,7 +273,7 @@ func main() {
 	fmt.Println("2. Si comparás una interfaz con nil, asegurate que realmente")
 	fmt.Println("   sea nil de tipo interfaz, no un puntero nil envuelto.")
 	fmt.Println()
-	fmt.Println("3. Usar errors.As en lugar de type assertions directas")
+	fmt.Println("3. Usar errors.AsType (o errors.As) en lugar de type assertions")
 	fmt.Println("   para extraer tipos de error concretos.")
 	fmt.Println()
 	fmt.Println("4. Type assertions con la forma 'v, ok := i.(T)' (siempre)")

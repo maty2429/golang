@@ -93,9 +93,15 @@ func main() {
 	fmt.Printf("pX := &x  → %p (apunta a x)\n", pX)
 
 	// Forma 3: new() → aloca memoria en el heap y retorna un puntero
+	// Tiene dos variantes:
+	//   new(int) → clásica: recibe un TIPO, el valor arranca en su zero value (0)
+	//   new(42)  → Go 1.26+: recibe un VALOR, el puntero ya nace inicializado
 	pNew := new(int) // aloca un int en heap, inicializado a 0
 	*pNew = 77
 	fmt.Printf("pNew := new(int) → %p → valor: %d\n", pNew, *pNew)
+
+	pDirecto := new(42) // Go 1.26+: equivale a las dos líneas de arriba en una
+	fmt.Printf("pDirecto := new(42) → %p → valor: %d\n", pDirecto, *pDirecto)
 
 	// Forma 4: & a un literal de struct (muy común en Go)
 	type Punto struct{ X, Y int }

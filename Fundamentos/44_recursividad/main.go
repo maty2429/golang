@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // =========================================================
 // RECURSIVIDAD
@@ -109,19 +112,11 @@ func sumarArbol(nodo Nodo) float64 {
 }
 
 func mostrarArbol(nodo Nodo, nivel int) {
-	prefijo := strings.repeat("  ", nivel)
+	prefijo := strings.Repeat("  ", nivel) // repite "  " nivel veces (indentación)
 	fmt.Printf("%s- %s: $%.2f\n", prefijo, nodo.Nombre, nodo.Precio)
 	for _, hijo := range nodo.SubNodos {
 		mostrarArbol(hijo, nivel+1)
 	}
-}
-
-func strings_repeat(s string, n int) string {
-	r := ""
-	for i := 0; i < n; i++ {
-		r += s
-	}
-	return r
 }
 
 func main() {
@@ -218,17 +213,4 @@ func main() {
 	fmt.Println("          (árboles, estructuras anidadas, divide y conquista)")
 	fmt.Println("Desventajas: más lenta que loops, puede causar stack overflow")
 	fmt.Println("             con N muy grandes")
-}
-
-// Wrapper para strings.Repeat (lo implementamos manualmente)
-var strings = struct {
-	repeat func(string, int) string
-}{
-	repeat: func(s string, n int) string {
-		r := ""
-		for i := 0; i < n; i++ {
-			r += s
-		}
-		return r
-	},
 }

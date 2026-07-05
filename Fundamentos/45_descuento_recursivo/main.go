@@ -38,19 +38,6 @@ type Carrito struct {
 // FORMATEO DE MONEDA (mejorando la presentación)
 // ─────────────────────────────────────────────────────────
 
-// formatearMoneda convierte 1500000.5 → "$1,500,000.50"
-func formatearMoneda(monto float64) string {
-	// Separar parte entera y decimal
-	entero := int(monto)
-	decimal := math.Round((monto-float64(entero))*100) / 100
-
-	// Formatear la parte entera con separadores de miles
-	enteroFormateado := formatearEnteroConComas(entero)
-
-	// Construir el string final
-	return fmt.Sprintf("$%s%.2f", enteroFormateado, decimal)[0:len(fmt.Sprintf("$%s%.2f", enteroFormateado, decimal))]
-}
-
 // formatearEnteroConComas convierte 1500000 → "1,500,000"
 // Usa recursión para insertar la coma cada 3 dígitos
 func formatearEnteroConComas(n int) string {

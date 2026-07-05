@@ -170,11 +170,14 @@ func main() {
 		fmt.Println("  → El producto está agotado, notificamos al depósito")
 	}
 
-	// errors.As: extrae el error a un tipo específico
-	var errCompra ErrorCompra
+	// errors.AsType (Go 1.26+): extrae el error a un tipo específico.
+	// Es la versión genérica de errors.As. En código anterior a 1.26 vas a ver:
+	//   var errCompra ErrorCompra
+	//   if errors.As(errStock, &errCompra) { ... }
+	// AsType hace lo mismo pero más directo: retorna (valor, ok).
 	p2, _ := buscarProducto(catalogo, 1)
 	_, errStock := comprar(p2, 100) // pedir más de lo disponible
-	if errors.As(errStock, &errCompra) {
+	if errCompra, ok := errors.AsType[ErrorCompra](errStock); ok {
 		fmt.Printf("  → Error personalizado capturado:\n")
 		fmt.Printf("     Operación: %s\n", errCompra.Operacion)
 		fmt.Printf("     Código:    %d\n", errCompra.Codigo)
@@ -213,7 +216,7 @@ func main() {
 	fmt.Println("3. Crear errores: fmt.Errorf() o errors.New()")
 	fmt.Println("4. Error personalizado: tipo con método Error() string")
 	fmt.Println("5. errors.Is() → comparar con error centinela")
-	fmt.Println("6. errors.As() → extraer tipo de error específico")
+	fmt.Println("6. errors.AsType[T]() → extraer tipo de error específico (antes: errors.As)")
 	fmt.Println("7. %w en fmt.Errorf → envolver/preservar el error original")
 	fmt.Println("8. NUNCA ignorar errores con _ en código de producción")
 }
