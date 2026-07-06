@@ -1,8 +1,10 @@
 # 📖 Gocito — mi biblia de Go
 
-Biblioteca personal de estudio de Go, desde cero hasta punteros.
+Biblioteca personal de estudio de Go, desde cero hasta concurrencia (con la
+mira puesta en dominar el lenguaje para hacer APIs REST y programas reales).
 Cada carpeta es **un tema**: un `main.go` ejecutable, con comentarios en español
 que explican qué hace cada cosa, ejemplos prácticos y un resumen al final.
+Los temas de `Testing/` además incluyen un `main_test.go` con tests reales.
 
 ## Cómo ejecutar cualquier tema
 
@@ -23,7 +25,16 @@ que rompen, mirá los errores del compilador.
 1. **Fundamentos** (01 → 45): la base completa del lenguaje.
 2. **Strings** (01 → 10): se puede intercalar después de Fundamentos 17 (maps),
    porque usa slices, maps y manejo de errores.
-3. **Punteros** (01 → 12): el bloque final, requiere structs y métodos.
+3. **Punteros** (01 → 12): requiere structs y métodos.
+4. **Interfaces** (01 → 10): el siguiente concepto grande después de punteros.
+5. **Closures** (01 → 06) y **Paquetes** (01 → 06): se pueden estudiar en
+   cualquier orden entre sí.
+6. **ErroresAvanzados** (01 → 08) y **Generics** (01 → 05): cierran el lenguaje.
+7. **JSON** (01 → 07), **Tiempo** (01 → 06), **Archivos** (01 → 06): la
+   biblioteca estándar que usa cualquier programa real.
+8. **Contexto** (01 → 04) y **Logging** (01 → 03): antes de concurrencia.
+9. **Testing** (01 → 06): aprendé a testear antes de meterte en concurrencia.
+10. **Concurrencia** (01 → 10): el bloque más avanzado, se apoya en TODO lo anterior.
 
 ---
 
@@ -109,6 +120,143 @@ que rompen, mirá los errores del compilador.
 | 11 | `11_interfaces_nil_trap` | La trampa de la interfaz que contiene un puntero nil |
 | 12 | `12_punteros_ultimo_recurso` | Cuándo SÍ y cuándo NO usar punteros (tabla de decisión) |
 
+## 🧩 Interfaces (10 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_que_es_una_interfaz` | El contrato: "importa qué sabe hacer, no qué es" |
+| 02 | `02_implementacion_implicita` | Sin `implements`: cumplir un contrato con solo tener los métodos |
+| 03 | `03_multiples_metodos` | Interfaces con varios métodos, composición de interfaces |
+| 04 | `04_fmt_stringer` | La interfaz más usada de Go: `String() string` |
+| 05 | `05_type_assertion` | `v, ok := i.(T)` — recuperar el tipo concreto |
+| 06 | `06_type_switch` | `switch v := i.(type)` — distinguir entre varios tipos |
+| 07 | `07_interfaz_vacia_any` | `any`/`interface{}`, cuándo usarlo y cuándo no |
+| 08 | `08_interfaces_como_parametros` | Polimorfismo real: un checkout, varios métodos de pago |
+| 09 | `09_error_interface_a_fondo` | `error` es solo una interfaz de un método |
+| 10 | `10_ejercicio_integrador` | Kiosco digital: pagos, notificaciones, eventos, todo con interfaces |
+
+## 🔒 Closures (6 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_funciones_anonimas` | Funciones sin nombre, IIFE, como argumento |
+| 02 | `02_que_es_un_closure` | Una función que "recuerda" variables de donde nació |
+| 03 | `03_contador_con_estado` | Closures como objetos con estado privado |
+| 04 | `04_trampa_closure_en_for` | El bug clásico del for — y por qué Go 1.22+ ya lo arregló |
+| 05 | `05_funciones_que_devuelven_funciones` | Fábricas y decoradores (base de los middlewares) |
+| 06 | `06_ejercicio_integrador` | Reglas de descuento configurables + caja con estado |
+
+## 📦 Paquetes (6 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_que_es_un_paquete` | `package main` vs paquetes de librería |
+| 02 | `02_organizar_en_carpetas` | Tu primer paquete propio, multi-archivo |
+| 03 | `03_visibilidad` | Mayúscula = exportado, minúscula = privado |
+| 04 | `04_go_mod_a_fondo` | `module`, `go X.Y.Z`, `require`, `go.sum`, comandos comunes |
+| 05 | `05_multiples_archivos_mismo_paquete` | Un mismo paquete repartido en varios .go |
+| 06 | `06_ejercicio_integrador` | Mini proyecto con paquetes `productos` + `clientes` |
+
+## 🚨 ErroresAvanzados (8 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_errors_new_vs_fmt_errorf` | Diferencia y errores centinela |
+| 02 | `02_wrapping_con_porcentaje_w` | `%w`, agregar contexto sin perder el error original |
+| 03 | `03_errors_is_a_fondo` | `errors.Is` vs `==`, varios centinela |
+| 04 | `04_errors_as_astype` | Recuperar el tipo concreto, con y sin wrapping |
+| 05 | `05_errores_personalizados_con_campos` | Diseñar errores con datos útiles + `Unwrap()` propio |
+| 06 | `06_errors_join` | Combinar varios errores en uno (validar formularios completos) |
+| 07 | `07_panic_recover` | Cuándo sí usar panic, y cómo recuperarse |
+| 08 | `08_ejercicio_integrador` | Registro de usuario con manejo de errores completo |
+
+## 🧬 Generics (5 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_por_que_generics` | El problema que resuelven (ni copiar función, ni perder tipos con `any`) |
+| 02 | `02_funciones_genericas` | Sintaxis `[T any]`, inferencia de tipos |
+| 03 | `03_constraints` | Constraints propios, `comparable`, `cmp.Ordered` |
+| 04 | `04_tipos_genericos` | Structs genéricos: una `Pila[T]` reusable |
+| 05 | `05_ejercicio_integrador` | `Filtrar`/`Mapear`/`Reducir` genéricos sobre el catálogo |
+
+## 🧾 JSON (7 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_marshal_basico` | `json.Marshal`: struct → JSON |
+| 02 | `02_unmarshal_basico` | `json.Unmarshal`: JSON → struct |
+| 03 | `03_tags` | `json:"nombre"`, `omitempty`, `-` |
+| 04 | `04_structs_anidados` | JSON anidado, arrays de structs, embedding |
+| 05 | `05_campos_opcionales_con_punteros` | `*T` + `omitempty` para PATCH parciales (conecta con Punteros/05) |
+| 06 | `06_valores_dinamicos` | `map[string]any` para JSON de forma desconocida |
+| 07 | `07_ejercicio_integrador` | Procesar un "request" de pedido, preview de un handler HTTP |
+
+## ⏰ Tiempo (6 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_time_now_y_time_time` | `time.Now()`, `time.Time`, componentes de una fecha |
+| 02 | `02_duration` | `time.Duration`, constantes, `ParseDuration` |
+| 03 | `03_formatear_y_parsear` | El layout de referencia `2006-01-02 15:04:05` |
+| 04 | `04_sumar_restar_tiempo` | `Add`, `Sub`, `AddDate`, `Before`/`After` |
+| 05 | `05_timers_y_sleep` | `time.Sleep`, `time.After`, `time.Timer` |
+| 06 | `06_ejercicio_integrador` | Agenda de turnos con detección de solapamientos |
+
+## 📁 Archivos (6 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_leer_y_escribir_archivos` | `os.ReadFile`/`WriteFile`, `os.Stat` |
+| 02 | `02_bufio_lectura_eficiente` | `bufio.Scanner`/`Writer` línea por línea |
+| 03 | `03_leer_csv` | `encoding/csv`: leer y escribir tablas |
+| 04 | `04_os_args` | Argumentos de línea de comandos, base de un CLI |
+| 05 | `05_variables_de_entorno` | `os.Getenv`/`LookupEnv`, config y secretos |
+| 06 | `06_ejercicio_integrador` | Carrito persistente en disco (JSON + Archivos) |
+
+## ⏳ Contexto (4 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_que_es_context` | `context.Context`, propagación entre funciones |
+| 02 | `02_with_timeout` | Cancelación automática por tiempo |
+| 03 | `03_with_cancel` | Cancelación manual, frenar el resto del trabajo |
+| 04 | `04_ejercicio_integrador` | Requests con timeout (preview de HTTP) |
+
+## 📝 Logging (3 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_slog_basico` | `log/slog`: logging estructurado con clave-valor |
+| 02 | `02_niveles_y_handlers` | Text vs JSON handler, niveles, `With` |
+| 03 | `03_ejercicio_integrador` | Logging de un checkout completo, con contexto por pedido |
+
+## 🧪 Testing (6 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_go_test_basico` | `go test`, `t.Errorf` vs `t.Fatalf` |
+| 02 | `02_table_driven_tests` | El patrón de testing de Go: tabla de casos |
+| 03 | `03_subtests_t_run` | `t.Run` para subtests con nombre |
+| 04 | `04_coverage` | `go test -cover`, por qué `main()` diluye el porcentaje |
+| 05 | `05_testing_errores` | Testear funciones con `error`, y panics esperados |
+| 06 | `06_ejercicio_integrador` | Suite completa: tabla + subtests + `errors.Is` |
+
+## 🔀 Concurrencia (10 temas)
+
+| # | Tema | Qué cubre |
+|---|------|-----------|
+| 01 | `01_goroutines` | `go func()`, por qué son baratas, el riesgo de no esperarlas |
+| 02 | `02_waitgroup` | `sync.WaitGroup`: la forma correcta de esperar goroutines |
+| 03 | `03_channels_basico` | Enviar, recibir, cerrar, `for range` sobre un channel |
+| 04 | `04_channels_buffer` | Canales con buffer, `len`/`cap` |
+| 05 | `05_select` | Esperar en varios channels, `default`, timeouts |
+| 06 | `06_mutex` | `sync.Mutex`, condiciones de carrera explicadas con código |
+| 07 | `07_race_detector` | `go run -race` / `go test -race` |
+| 08 | `08_worker_pool` | N workers fijos procesando una cola de trabajos |
+| 09 | `09_context_con_goroutines` | Cancelar varias goroutines a la vez |
+| 10 | `10_ejercicio_integrador` | Procesar pedidos en paralelo: worker pool + Mutex + context |
+
 ---
 
 ## 🗺️ Hoja de ruta completa: de acá a dominar Go
@@ -117,55 +265,34 @@ El objetivo NO es aprender todo (imposible), sino dominar lo necesario para
 hacer **APIs REST bien hechas** y **programas reales**. Esta es la ruta, en
 orden. Cada etapa se apoya en la anterior — no saltees.
 
-### Etapa 1 — Completar el lenguaje 🧩
+### ✅ Etapa 1 — Completar el lenguaje 🧩 (hecho)
 
-Lo que falta del lenguaje en sí. Sin esto, el código de cualquier API te va
-a parecer chino.
+Lo que faltaba del lenguaje en sí, ya cubierto en `Interfaces/`, `Closures/`,
+`Paquetes/`, `ErroresAvanzados/` y `Generics/`.
 
-| Tema | Qué es | Por qué importa |
-|------|--------|-----------------|
-| **Interfaces** | Contratos: "cualquier tipo que tenga estos métodos sirve". Implementación implícita, `fmt.Stringer`, `error`, type assertions, type switch | EL concepto más importante después de punteros. Todo Go gira alrededor de interfaces (`io.Reader`, `http.Handler`...) |
-| **Closures y funciones anónimas** | Funciones que "recuerdan" las variables de donde nacieron | Los middlewares de una API son closures. Profundiza Fundamentos 41-42 |
-| **Paquetes y visibilidad** | Organizar código en carpetas/paquetes propios; Mayúscula = público, minúscula = privado; `go.mod` a fondo | Para salir de archivos sueltos y armar proyectos de verdad |
-| **Errores avanzados** | `errors.New`, `fmt.Errorf` con `%w` (wrapping), `errors.Is/As`, errores personalizados, `panic`/`recover` | Una API se diferencia por cómo maneja errores. Profundiza Fundamentos 38 |
-| **Generics** | Funciones y tipos que aceptan cualquier tipo: `func Max[T cmp.Ordered](a, b T) T` | Solo lo básico: leerlos y usarlos. No hace falta dominarlos para APIs |
+### ✅ Etapa 2 — Biblioteca estándar esencial 📚 (hecho)
 
-### Etapa 2 — Biblioteca estándar esencial 📚
+Los paquetes que usa el 90% de los programas reales, cubiertos en `JSON/`,
+`Tiempo/`, `Archivos/`, `Contexto/` y `Logging/`.
 
-Los paquetes que usa el 90% de los programas reales.
+> Pendiente menor: `io`/`bufio` a fondo (ya viste `bufio` en `Archivos/02`) y
+> `regexp` — se agregan si algún proyecto los necesita, no bloquean nada.
 
-| Paquete | Para qué | Prioridad |
-|---------|----------|-----------|
-| **encoding/json** | `Marshal`/`Unmarshal`, tags `` `json:"nombre"` `` — convertir structs ↔ JSON | 🔴 Crítico: una API REST ES recibir y devolver JSON |
-| **time** | Fechas, duraciones, formateo (el raro layout `2006-01-02`), timers | 🔴 Crítico: todo programa usa fechas |
-| **os + archivos** | Leer/escribir archivos, `os.Args`, variables de entorno (`os.Getenv`) | 🔴 Crítico: config de la API viene de variables de entorno |
-| **io / bufio** | Las interfaces `Reader`/`Writer` y lectura eficiente | 🟡 Importante: aparecen en TODAS las firmas de la stdlib |
-| **context** | Cancelación y timeouts que viajan por las funciones | 🔴 Crítico: cada handler HTTP recibe un `context.Context` |
-| **log/slog** | Logging estructurado (el logger moderno de Go) | 🟡 Importante: para saber qué pasa en producción |
-| **regexp** | Expresiones regulares | 🟢 Útil: validaciones; con lo básico alcanza |
+### ✅ Etapa 3 — Testing 🧪 (hecho)
 
-### Etapa 3 — Testing 🧪
+Cubierto en `Testing/`: `go test`, table-driven tests, subtests con `t.Run`,
+coverage, testing de errores y panics.
 
-Antes de concurrencia y APIs, porque vas a testear todo lo que sigue.
+> Pendiente menor: `httptest` (testear handlers sin levantar el servidor) se
+> retoma cuando lleguemos a la Etapa 5.
 
-1. **go test** — tests unitarios, archivos `_test.go`, `t.Errorf`
-2. **Table-driven tests** — EL patrón de testing de Go (un slice de casos + un loop)
-3. **Subtests y coverage** — `t.Run`, `go test -cover`
-4. **httptest** — testear handlers HTTP sin levantar el servidor (lo retomás en la etapa 5)
+### ✅ Etapa 4 — Concurrencia 🔀 (hecho)
 
-### Etapa 4 — Concurrencia 🔀
+Cubierto en `Concurrencia/`: goroutines, `sync.WaitGroup`, channels (con y sin
+buffer), `select`, `sync.Mutex`, el detector de *race conditions* (`-race`),
+worker pools y `context` combinado con goroutines.
 
-Lo más distintivo de Go. Para APIs no necesitás ser experto (el servidor HTTP
-ya maneja la concurrencia por vos), pero SÍ entender qué pasa abajo.
-
-1. **Goroutines** — `go func()`: miles de "hilos" baratos
-2. **Channels** — comunicar goroutines; con y sin buffer; `select`
-3. **sync.WaitGroup** — esperar a que terminen varias goroutines
-4. **sync.Mutex** — proteger datos compartidos (y detectar races con `go test -race`)
-5. **context + concurrencia** — cancelar trabajos en curso
-6. **Patrones** — worker pools, pipeline (con uno o dos alcanza)
-
-### Etapa 5 — APIs REST 🌐 (el objetivo)
+### Etapa 5 — APIs REST 🌐 (el objetivo, sigue)
 
 Acá se junta TODO lo anterior. Go trae casi todo en la stdlib: con `net/http`
 solo ya se hacen APIs profesionales.
